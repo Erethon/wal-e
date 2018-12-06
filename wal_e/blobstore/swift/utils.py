@@ -30,11 +30,18 @@ def uri_put_file(creds, uri, fp, content_type=None):
 
     url_tup = urlparse(uri)
 
+    headers = {}
+    if creds.delete_after:
+        headers['X-Delete-After'] = creds.delete_after
+    if creds.delete_at:
+        headers['X-Delete-At'] = creds.delete_at
+
     container_name = url_tup.netloc
     conn = calling_format.connect(creds)
 
     conn.put_object(
-        container_name, url_tup.path, fp, content_type=content_type
+        container_name, url_tup.path, fp, content_type=content_type,
+        headers=headers
     )
     # Swiftclient doesn't return us the total file size, we see how much of the
     # file swiftclient read in order to determine the file size.

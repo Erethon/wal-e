@@ -542,6 +542,8 @@ def configure_backup_cxt(args):
             os.getenv('SWIFT_PROJECT_NAME'),
             os.getenv('SWIFT_PROJECT_DOMAIN_ID'),
             os.getenv('SWIFT_PROJECT_DOMAIN_NAME'),
+            os.getenv('SWIFT_DELETE_AFTER'),
+            os.getenv('SWIFT_DELETE_AT'),
         )
         return SwiftBackup(store, creds, gpg_key_id)
     elif store.is_gs:

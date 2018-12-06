@@ -2,7 +2,8 @@ class Credentials(object):
     def __init__(self, authurl, user, password, tenant_name, region,
             endpoint_type, auth_version, domain_id, domain_name, tenant_id,
             user_id, user_domain_id, user_domain_name, project_id,
-            project_name, project_domain_id, project_domain_name):
+            project_name, project_domain_id, project_domain_name, delete_after,
+            delete_at):
         self.authurl = authurl
         self.user = user
         self.password = password
@@ -20,3 +21,5 @@ class Credentials(object):
         self.project_name = project_name
         self.project_domain_id = project_domain_id
         self.project_domain_name = project_domain_name
+        self.delete_after = delete_after
+        self.delete_at = delete_at
